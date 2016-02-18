@@ -5,7 +5,7 @@
     class PalindromesTest extends PHPUnit_Framework_TestCase
     {
 
-        function test_makeTitleCase_oneWord()
+        function test_checkPalindrome_false()
         {
 
             //Arrange
@@ -16,8 +16,22 @@
             $result = $test_Palindromes->compareWord($input);
 
             //Assert tells our tests what to expect from the output of our method.
-            $this->assertEquals("fluwoeb", $result);
-        }  
+            $this->assertEquals(false, $result);
+        }
+
+        function test_checkPalindrome_true()
+        {
+
+            //Arrange
+            $test_Palindromes = new Palindromes;
+            $input = "racecar";
+
+            //Act: runs the actual method that we are testing.
+            $result = $test_Palindromes->compareWord($input);
+
+            //Assert tells our tests what to expect from the output of our method.
+            $this->assertEquals(true, $result);
+        }
     }
 
     // Run in terminal in project folder
