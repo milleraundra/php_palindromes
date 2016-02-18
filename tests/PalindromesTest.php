@@ -24,7 +24,7 @@
 
             //Arrange
             $test_Palindromes = new Palindromes;
-            $input = "racecar";
+            $input = "Racecar";
 
             //Act: runs the actual method that we are testing.
             $result = $test_Palindromes->compareWord($input);

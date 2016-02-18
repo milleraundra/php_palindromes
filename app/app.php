@@ -1,17 +1,6 @@
 <?php
     require_once __DIR__."/../vendor/autoload.php";
-    require_once __DIR__."/../src/Contact.php";
-        // If you hit the BSOD (blank screen of death) in a Silex app, add these lines to your app.php file right under your require_once statements.
-        //Add symfony debug component and turn it on.
-            //use Symfony\Component\Debug\Debug;
-            //Debug::enable();
-    
-        // Set Silex debug mode in $app object
-            //$app['debug'] = true;
-    session_start();
-    if (empty($_SESSION['list_of_places'])) {
-        $_SESSION['list_of_places'] = array();
-    }
+    require_once __DIR__."/../src/Palindromes.php";
 
     $app = new Silex\Application();
 
@@ -23,10 +12,21 @@
 
     // Render Home Page
     $app->get("/", function() use ($app) {
-        return $app['twig']->render('example.html.twig'); //
+        return $app['twig']->render('palindromes.html.twig'); //
     });
+
+    // User Input form
+    $app->get("/userInput", function() use ($app) {
+        $new_palindrome = new Palindromes;
+        $inputted_word = $_GET['word'];
+        $result = $new_palindrome->compareWord($inputted_word);
+        var_dump($result);
+
+        return $app['twig']->render('palindromes.html.twig', array('result' => $result, 'input' => $inputted_word)); //
+    });
+
+
 
     return $app;
 
 ?>
-

@@ -3,27 +3,31 @@
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <link rel="stylesheet" href="css/styles.css">
-        <title>EXAMPLE</title>
+        <title>Palindromes</title>
     </head>
 
         <body>
           <div class='container'>
             <div class='jumbotron'>
-              <h1>EXAMPLE</h1>
+              <h1>Palindromes</h1>
               <p><em>You can't ping without your pong</em></p>
             </div>  <!-- /JUMBOTRON -->
 
         <!-- Row: 1 -->
             <div class='row'>
               <div class='col-sm-6'>
-                  <h2>Enter a number, brah!</h2>
+                  <h2>Enter a word, brah!</h2>
+
                   <form action='/userInput'>
                       <div class='form-group'>
-                        <label for='number'>Number</label>
-                        <input id='number' name='number' type='number'>
+                        <label for='word'>Gimme a word:</label>
+                        <input id='word' name='word' type='text'>
                       </div>
+
                       <button class='btn btn-warning' type='submit'>Submit!</button>
+
                 </form>
+
             </div>  <!-- /col-sm-6 -->
           </div>  <!-- /Row -->
 
@@ -31,12 +35,15 @@
         <!-- Row: 2 -->
           <div class="row">
               <div class="col-sm-6">
-                    <ul>
-                        <!-- {% for result in results %}
-                            <li>{{ result }}</li>
-                        {% endfor %} -->
-                    </ul>
-
+                  {% if result is not empty %}
+                      <h4>Your werd was: {{ input }}</h4>
+                        {% if result == true %}
+                            <h4>Congrats, you have palindrome</h4>
+                        {% endif %}
+                        {% if result == false %}
+                            <h4>Sorry, try again, no pali for you.</h4>
+                        {% endif %}
+                  {% endif %}
               </div><!--col-sm-6-->
           </div><!--row-->
       </div>  <!-- /Container  -->
